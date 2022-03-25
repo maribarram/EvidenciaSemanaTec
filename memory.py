@@ -11,7 +11,6 @@ Exercises:
 
 from random import *  #importa la librería random
 from turtle import *  # importa la librería turtle
-
 from freegames import path  #importa la función path de la librería freegames
 
 car = path('car.gif')       #guarda una imagen de un carro en la variable car
