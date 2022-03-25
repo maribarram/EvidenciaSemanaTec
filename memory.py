@@ -50,14 +50,17 @@ def tap(x, y):   "Devuelve el comportamiento del juego dependiendo del cuadro qu
     """Update mark and hidden tiles based on tap."""
     spot = index(x, y)
     mark = state['mark']
+    cuentatap= 0;
 
     if (mark is None or mark == spot or 
         tiles[mark] != tiles[spot]):
         state['mark'] = spot
+	cuentatap=cuentatap+1
     else:
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
+	cuentatap=cuentatap+1
 
 
 def draw():     #Esta funcion dibuja el cuandro en cuanto se haya detectado una respuesta correcta
