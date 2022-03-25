@@ -8,7 +8,9 @@ Exercises
 4. How could you create a computer player?
 """
 
+from tkinter import CENTER
 from turtle import *
+import turtle
 
 from freegames import line
 
@@ -22,17 +24,20 @@ def grid():
 
 
 def drawx(x, y):
+    turtle.color("blue")
     """Draw X player."""
-    line(x, y, x + 133, y + 133)
-    line(x, y + 133, x + 133, y)
+    line(x+25, y+25, x + 117, y + 117,)
+    line(x+25, y + 117, x + 117, y+25)
+ 
 
 
 def drawo(x, y):
+    turtle.color("green")
     """Draw O player."""
     up()
-    goto(x + 67, y + 5)
+    goto(x + 70, y + 15)
     down()
-    circle(62)
+    circle(50)
 
 
 def floor(value):
