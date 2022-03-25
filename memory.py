@@ -35,20 +35,24 @@ def square(x, y):  #Esta funcion se encarga de crear los cuadrados del juego
 
 def index(x, y):  
     """Convert (x, y) coordinates to tiles index."""
-    return int((x + 200) // 50 + ((y + 200) // 50) * 8)
+    return int((x + 200) // 
+                50 + ((y + 200) // 
+                50) * 8)
 
 
 def xy(count):
     """Convert tiles count to (x, y) coordinates."""
-    return (count % 8) * 50 - 200, (count // 8) * 50 - 200
-
+    return ((count % 8) * 5
+             0 - 200, 
+            (count // 8) * 50 - 200)
 
 def tap(x, y):   "Devuelve el comportamiento del juego dependiendo del cuadro que se escoga
     """Update mark and hidden tiles based on tap."""
     spot = index(x, y)
     mark = state['mark']
 
-    if mark is None or mark == spot or tiles[mark] != tiles[spot]:
+    if (mark is None or mark == spot or 
+        tiles[mark] != tiles[spot]):
         state['mark'] = spot
     else:
         hide[spot] = False
@@ -61,7 +65,7 @@ def draw():     #Esta funcion dibuja el cuandro en cuanto se haya detectado una 
     clear()
     goto(0, 0)
     shape(car)  #Esta función se encarga de darle la figura de el  nombre que se le introduzca 
-    stamp()
+    stamp()     
 
     for count in range(64):
         if hide[count]:
@@ -75,7 +79,8 @@ def draw():     #Esta funcion dibuja el cuandro en cuanto se haya detectado una 
         up()
         goto(x + 2, y)
         color('black')
-        write(tiles[mark], font=('Arial', 30, 'normal'))
+        write(tiles[mark], font=('Arial', 30,
+                                 'normal'))
 
     update()
     ontimer(draw, 100)
