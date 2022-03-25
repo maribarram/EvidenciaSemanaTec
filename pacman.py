@@ -20,12 +20,14 @@ state = {'score': 0}
 path = Turtle(visible=False)
 writer = Turtle(visible=False)
 aim = vector(5, 0)
+# Variable para modificar velocidad de ghosts
+vel = 20
 pacman = vector(-40, -80)
 ghosts = [
-    [vector(-180, 160), vector(5, 0)],
-    [vector(-180, -160), vector(0, 5)],
-    [vector(100, 160), vector(0, -5)],
-    [vector(100, -160), vector(-5, 0)],
+    [vector(-180, 160), vector(vel, 0)],
+    [vector(-180, -160), vector(0, vel)],
+    [vector(100, 160), vector(0, -vel)],
+    [vector(100, -160), vector(-vel, 0)],
 ]
 # fmt: off
 # Definicion del tablero:
@@ -148,10 +150,10 @@ def move():
             point.move(course)
         else:
             options = [
-                vector(5, 0),
-                vector(-5, 0),
-                vector(0, 5),
-                vector(0, -5),
+                vector(vel, 0),
+                vector(-vel, 0),
+                vector(0, vel),
+                vector(0, -vel),
             ]
             plan = choice(options)
             course.x = plan.x
