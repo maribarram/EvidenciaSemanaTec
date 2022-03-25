@@ -14,6 +14,7 @@ import turtle
 
 from freegames import line
 
+arr= []
 
 def grid():
     """Draw tic-tac-toe grid."""
@@ -39,6 +40,13 @@ def drawo(x, y):
     down()
     circle(50)
 
+def drawp(x, y):
+    turtle.color("red")
+    """Draw O player."""
+    up()
+    goto(x + 30, y + 60)
+    down()
+    circle(50)
 
 def floor(value):
     """Round value down to grid with square size 133."""
@@ -46,18 +54,23 @@ def floor(value):
 
 
 state = {'player': 0}
-players = [drawx, drawo]
+players = [drawx, drawo, drawp] # Aquí se define que jugador esta jugando segun el index 0 = x y 1 = o 
 
 
 def tap(x, y):
     """Draw X or O in tapped square."""
     x = floor(x)
     y = floor(y)
+    xy= [x,y]
     player = state['player']
     draw = players[player]
-    draw(x, y)
-    update()
-    state['player'] = not player
+    if xy not in arr:
+        arr.append(xy) 
+        draw(x, y)
+        update()
+        state['player'] = not player
+    else:
+        return
 
 
 setup(420, 420, 370, 0)
