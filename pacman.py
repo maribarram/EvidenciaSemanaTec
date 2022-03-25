@@ -9,7 +9,8 @@ Exercises
 5. Make the ghosts smarter.
 """
 
-from random import choice
+# Se importan librerias necesarias
+from random import choice 
 from turtle import *
 
 from freegames import floor, vector
@@ -30,27 +31,28 @@ ghosts = [
 # Definicion del tablero:
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
-    0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
-    0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0,
-    0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0,
-    0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
-    0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0,
-    0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
-    0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0,
-    0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0,
+    0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,
+    0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
+    0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0,
+    0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0,
+    0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0,
+    0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0,
+    0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
+    0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0,
+    0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
     0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
     0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0,
     0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0,
-    0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
+    0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ]
 # fmt: on
+
 
 # Dibuja un cuadrado en el espacio con coordenadas x,y:
 def square(x, y):
@@ -66,6 +68,7 @@ def square(x, y):
 
     path.end_fill()
 
+
 # Calcula la distancia para que se acabe el camino
 def offset(point):
     """Return offset of point in tiles."""
@@ -73,6 +76,7 @@ def offset(point):
     y = (180 - floor(point.y, 20)) / 20
     index = int(x + y * 20)
     return index
+
 
 # Verifica qeu el punto sea parte del camino
 def valid(point):
@@ -89,11 +93,12 @@ def valid(point):
 
     return point.x % 20 == 0 or point.y % 20 == 0
 
+
 # Dibuja el mundo utilizando path y la funcion square:
 def world():
     """Draw world using path."""
     bgcolor('black')
-    path.color('blue')
+    path.color('green')
 
     for index in range(len(tiles)):
         tile = tiles[index]
@@ -107,6 +112,7 @@ def world():
                 path.up()
                 path.goto(x + 10, y + 10)
                 path.dot(2, 'white')
+
 
 # Planea movimientos para pacman y ghosts:
 def move():
@@ -122,7 +128,8 @@ def move():
 
     index = offset(pacman)
 
-    # Si hay un punto en la posicion se aumenta el score y se elimina el punto del tablero
+    # Si hay un punto en la posicion se aumenta el score
+    # y se elimina el punto del tablero:
     if tiles[index] == 1:
         tiles[index] = 2
         state['score'] += 1
@@ -130,7 +137,7 @@ def move():
         y = 180 - (index // 20) * 20
         square(x, y)
 
-    # Se mueve el pacman 
+    # Se mueve el pacman
     up()
     goto(pacman.x + 10, pacman.y + 10)
     dot(20, 'yellow')
@@ -163,12 +170,14 @@ def move():
 
     ontimer(move, 100)
 
+
 # Cambia la direccion del pacman
 def change(x, y):
     """Change pacman aim if valid."""
     if valid(pacman + vector(x, y)):
         aim.x = x
         aim.y = y
+
 
 # Se crea ventana para el juego
 setup(420, 420, 370, 0)
